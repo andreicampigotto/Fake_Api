@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186706113348",
+    "project_id": "products-tests",
+    "storage_bucket": "products-tests.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186706113348:android:80395e08fdc8fb43e91d11",
+        "android_client_info": {
+          "package_name": "com.proway.fake_api"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186706113348-3seeve2enhk3vgt7g5tvn8k5brbb32ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP3R5OHM-JkLslCK4T8OWnxf--AWCn8Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186706113348-3seeve2enhk3vgt7g5tvn8k5brbb32ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
