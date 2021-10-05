@@ -21,7 +21,13 @@ class FragmentProduct : Fragment(R.layout.fragment_product) {
 
     private lateinit var viewModel: FragmentProductViewModel
     private lateinit var binding: FragmentProductBinding
-    private val productAdapter = ProductAdapter()
+
+    private var selectedProduct: Product? = null
+    private val productAdapter = ProductAdapter(){
+        selectedProduct = it
+
+
+    }
 
     private val observerProduct = Observer<List<Product>> {
         productAdapter.submitList(it)
@@ -56,9 +62,4 @@ class FragmentProduct : Fragment(R.layout.fragment_product) {
             context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
     }
-
-    companion object {
-        fun newInstance() = FragmentProduct()
-    }
-
 }

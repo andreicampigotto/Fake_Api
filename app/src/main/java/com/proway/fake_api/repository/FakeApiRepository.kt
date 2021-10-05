@@ -17,6 +17,14 @@ class FakeApiRepository @Inject constructor(private val service: ProductService)
         }
     }
 
+    suspend fun fetchProductsbyId(productId : Int): List<Product>?{
+        return  withContext(Dispatchers.Default){
+            val response = service.getProduct(productId)
+            val processedResponse = processData(response)
+            processedResponse
+        }
+    }
+
     private fun <T> processData(response: Response<T>): T? {
         return if (response.isSuccessful) response.body() else null
     }

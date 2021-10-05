@@ -11,7 +11,7 @@ import com.proway.fake_api.databinding.ItemProductBinding
 import com.proway.fake_api.model.Product
 
 
-class ProductAdapter : ListAdapter<Product, ProductViewHolder>(ProductsDiffCallback()) {
+class ProductAdapter(val onTap: (Product) -> Unit) : ListAdapter<Product, ProductViewHolder>(ProductsDiffCallback()) {
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         getItem(position).let { product ->
@@ -21,18 +21,19 @@ class ProductAdapter : ListAdapter<Product, ProductViewHolder>(ProductsDiffCallb
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false).apply {
-            return ProductViewHolder(this)
+            return ProductViewHolder(this, onTap)
         }
     }
 }
 
-class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ProductViewHolder(itemView: View, val onTap: (Product) -> Unit) : RecyclerView.ViewHolder(itemView) {
     private val binding: ItemProductBinding = ItemProductBinding.bind(itemView)
 
     fun bind(product: Product) {
         binding.priceTextView.text = "R$ ${product.price}"
         binding.titleTextView.text = product.title
         binding.subtitleTextView.text = product.description
+        itemView.setOnClickListener { onTap(product) }
 
         Glide.with(itemView.context)
             .load(product.image)
